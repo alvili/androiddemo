@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Imagen de prueba</string>
+    <string name="mainImageDesc">Cartelera del sábado</string>
+    <string name="tutoloApp">La Cartelera</string>
+    <string name="meGusta">me gusta</string>
+    <string name="noMeGusta">No me gusta</string>
+</resources>
