@@ -4,13 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3D2330"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/idDisplay"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="232dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="20dp"
+        android:background="@android:color/holo_blue_dark"
         android:text="0" />
 
 
@@ -21,120 +27,145 @@
 
         <LinearLayout
             android:id="@+id/idLayoutV1"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/idBoton15"
+                    style="@android:style/Widget.Button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
+                    android:onClick="botonPulsado"
                     android:text="@string/botonOFF" />
 
                 <Button
                     android:id="@+id/idBoton16"
+                    style="@android:style/Widget.Button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
+                    android:onClick="botonPulsado"
                     android:text="@string/botonC" />
 
                 <Button
                     android:id="@+id/idBoton17"
+                    style="@android:style/Widget.Button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
+                    android:onClick="botonPulsado"
                     android:text="@string/botonMas" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/idBoton1"
+                    style="@android:style/Widget.Button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
+                    android:onClick="botonPulsado"
                     android:text="@string/boton1" />
 
                 <Button
                     android:id="@+id/idBoton2"
+                    style="@android:style/Widget.Button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
+                    android:onClick="botonPulsado"
                     android:text="@string/boton2" />
 
                 <Button
                     android:id="@+id/idBoton3"
+                    style="@android:style/Widget.Button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
+                    android:onClick="botonPulsado"
                     android:text="@string/boton3" />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/idBoton4"
+                    style="@android:style/Widget.Button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
+                    android:onClick="botonPulsado"
                     android:text="@string/boton4" />
 
                 <Button
                     android:id="@+id/idBoton5"
+                    style="@android:style/Widget.Button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
+                    android:onClick="botonPulsado"
                     android:text="@string/boton5" />
 
                 <Button
                     android:id="@+id/idBoton6"
+                    style="@android:style/Widget.Button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
+                    android:onClick="botonPulsado"
                     android:text="@string/boton6" />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/idBoton7"
+                    style="@android:style/Widget.Button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
+                    android:onClick="botonPulsado"
                     android:text="@string/boton7" />
 
                 <Button
                     android:id="@+id/idBoton8"
+                    style="@android:style/Widget.Button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
+                    android:onClick="botonPulsado"
                     android:text="@string/boton8" />
 
                 <Button
                     android:id="@+id/idBoton9"
+                    style="@android:style/Widget.Button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
+                    android:onClick="botonPulsado"
                     android:text="@string/boton9" />
 
             </LinearLayout>
@@ -146,16 +177,20 @@
 
                 <Button
                     android:id="@+id/idBoton0"
+                    style="@android:style/Widget.Button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="2"
+                    android:onClick="botonPulsado"
                     android:text="@string/boton0" />
 
                 <Button
                     android:id="@+id/idBoton10"
+                    style="@android:style/Widget.Button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
+                    android:onClick="botonPulsado"
                     android:text="@string/botonComa" />
 
             </LinearLayout>
@@ -164,36 +199,46 @@
 
         <LinearLayout
             android:id="@+id/idLayoutV2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/idBoton11"
+                style="@android:style/Widget.Button"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:onClick="botonPulsado"
                 android:text="@string/botonMenos" />
 
             <Button
                 android:id="@+id/idBoton12"
+                style="@android:style/Widget.Button"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:onClick="botonPulsado"
                 android:text="@string/botonMultiplicar" />
 
             <Button
                 android:id="@+id/idBoton13"
+                style="@android:style/Widget.Button"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:onClick="botonPulsado"
                 android:text="@string/botonDividir" />
 
             <Button
                 android:id="@+id/idBoton14"
+                style="@android:style/Widget.Button"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
+                android:onClick="botonPulsado"
                 android:text="@string/botonIgual" />
 
         </LinearLayout>
