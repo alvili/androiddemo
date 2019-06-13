@@ -16,6 +16,6 @@
     <string name="botonDividir">/</string>
     <string name="botonIgual">=</string>
     <string name="botonComa">.</string>
-    <string name="botonOFF">OFF</string>
+    <string name="botonDel">Del</string>
     <string name="botonC">C</string>
 </resources>

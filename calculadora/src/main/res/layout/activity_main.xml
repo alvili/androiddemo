@@ -44,7 +44,7 @@
                     android:layout_height="60dp"
                     android:layout_weight="1"
                     android:onClick="botonPulsado"
-                    android:text="@string/botonOFF" />
+                    android:text="@string/botonDel" />
 
                 <Button
                     android:id="@+id/idBoton16"
