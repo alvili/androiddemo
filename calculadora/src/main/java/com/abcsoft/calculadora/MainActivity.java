@@ -12,9 +12,9 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView display;
     private Operando operandoTmp = new Operando();
-//    private ArrayList<Double> operandos = new ArrayList<>();
     private ArrayList<Operando> operandos = new ArrayList<>();
     private ArrayList<String> operadores = new ArrayList<>();
+    private ArrayList<String> operaciones = new ArrayList<>();
     private Estado[] estado = {Estado.INICIAL, Estado.INICIAL};
 
     @Override
@@ -100,17 +100,8 @@ public class MainActivity extends AppCompatActivity {
 
     //Actualiza el display
     public void ActualizarTeclaDisplay(String tecla){
-        StringBuilder sb = new StringBuilder();
-
-        /*
-        //Reconstruyo la sequencia de operaciones
-        sb.append(operandos(i));
-        for (int i=0;i<operadores.size();i++){
-            sb.append(operadores(i));
-            sb.append(operandos[i].);
-        }
-        */
-        sb.append(display.getText().equals("0") ? "" : display.getText()).append(tecla);
+        StringBuilder sb = ConstruirOperacion();
+//        sb.append(display.getText().equals("0") ? "" : display.getText()).append(tecla);
         display.setText(sb.toString());
     }
 
@@ -161,6 +152,37 @@ public class MainActivity extends AppCompatActivity {
         operandos.clear();
         operadores.clear();
     }
+
+
+    public StringBuilder ConstruirOperacion(){
+
+        StringBuilder sb = new StringBuilder();
+        int i = 0, j = 0;
+
+        //Reconstruyo la sequencia de operaciones
+        // Traverse both array
+        while (i < operandos.size() && j < operadores.size()) {
+            sb.append(operandos.get(i));
+            sb.append(operandos.get(j));
+            i++;
+            j++;
+        }
+
+        // Store remaining elements of first array
+        while (i < operandos.size()) {
+            sb.append(operandos.get(i));
+            i++;
+        }
+
+        // Store remaining elements of second array
+        while (j < operadores.size()) {
+            sb.append(operandos.get(i));
+            j++;
+        }
+
+        return sb;
+    }
+
 
 
 }
