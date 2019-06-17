@@ -30,7 +30,7 @@ class Adaptador extends BaseAdapter {
 
     @Override
     public View getView(int i, View convertView, ViewGroup parent) {
-        //Tenemos que crear un objecto a partie del xml
+        //Tenemos que crear un objecto a partir del xml
 
         //Creo un objeto view a partir de la plantilla elemento_lista
         final View vista = inflater.inflate(R.layout.elemento_lista, null);
