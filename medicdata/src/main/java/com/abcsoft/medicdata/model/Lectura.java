@@ -18,14 +18,14 @@ public class Lectura implements Serializable {
 
     //Creo varios constructores porque puede que algunos datos (geolocalizacion)
     // no esten disponibles por temas de permisos del terminal
-    public Lectura(Date fechaHora, double peso, double diastolica, double sistolica) {
+    public Lectura(Date fechaHora, double peso, double sistolica, double diastolica) {
         this.fechaHora = fechaHora;
         this.peso = peso;
         this.diastolica = diastolica;
         this.sistolica = sistolica;
     }
 
-    public Lectura(Date fechaHora, double peso, double diastolica, double sistolica, double longitud, double latitud) {
+    public Lectura(Date fechaHora, double peso, double sistolica, double diastolica, double longitud, double latitud) {
         this.fechaHora = fechaHora;
         this.peso = peso;
         this.diastolica = diastolica;

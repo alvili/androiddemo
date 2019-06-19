@@ -1,6 +1,7 @@
 package com.abcsoft.listviewpersonalizado;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,54 @@ class Adaptador extends BaseAdapter {
         calificacion.setProgress(Integer.valueOf(datos[i][3]));
 
         //Para cuando hagamos clic en el item
-        imagen.setTag(i);
+        imagen.setTag(i); //Lo recuperaré en la implementacion de la clase anonima
+
+        //Añadimos un listener a la imagen, atento al evento on click
+        //View.OnClickListener() esw una clase abstracta -> requiere implementacion
+        //Implementamos el listener como clase anonima
+        imagen.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                //v identifica la vista que llama al onClick
+                Intent intent = new Intent (contexto, VisorImagen.class); //1 (contexto) -> mundo en el que vive, 2) clase donde va
+
+                /*
+                //putExtra pasa datos a la clase vinculada con intent
+                intent.putExtra("nombre_parametro","Valor");
+                intent.putExtra("numeroHijos",12);
+                intent.putExtra("Objetocualquiera", new Character(2));
+                */
+
+                //variable i no es accessible desde aqui. la hemos guardado como Tag en imagen y la recuperamos desde aqui
+                intent.putExtra("IMG", datosImg[(Integer) v.getTag()]); //Recupero el parametro i
+                contexto.startActivity(intent); //lanza la activity
+
+            }
+        });
+
+        //Añado un listener al titulo para que me abra la descripcion en otra vista
+        titulo.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                //v identifica la vista que llama al onClick
+                Intent intent = new Intent (contexto, VisorTexto.class); //1 (contexto) -> mundo en el que vive, 2) clase donde va
+
+                //variable i no es accessible desde aqui. la hemos guardado como Tag en imagen y la recuperamos desde aqui
+                intent.putExtra("DESC", datos[(Integer) v.getTag()][4]); //Recupero el parametro i, que indica en que elemento estoy
+                contexto.startActivity(intent); //lanza la activity
+
+            }
+        });
+
+
+
+
+
+
+
+
 
         return vista;
     }
