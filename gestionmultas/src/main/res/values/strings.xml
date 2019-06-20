@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">gestionmultas</string>
+    <string name="tipo1">Leve</string>
+    <string name="tipo2">Grave</string>
+    <string name="tipo3">Muy grave</string>
+    <string name="botonGuardar">Guardar</string>
+    <string name="botonNueva">Nueva</string>
+</resources>
