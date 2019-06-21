@@ -16,13 +16,13 @@ import java.util.Date;
 
 public class FormularioNuevaMulta extends AppCompatActivity {
 
-    private MultaServices multaServices;
+//    private MultaServices multaServices;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.nueva_multa);
-            multaServices = MultaServicesImpl.getInstance();
+//            multaServices = MultaServicesImpl.getInstance();
         }
 
         public void guardar(View view){
@@ -33,7 +33,8 @@ public class FormularioNuevaMulta extends AppCompatActivity {
 
             //Creo nueva multa y le paso los valores del formulario
             Multa multa = new Multa();
-            multa.setCodigo(Long.parseLong(textCodigo.getText().toString()));
+            multa.setCodigo(null); //Autogenerado
+//            multa.setCodigo(Long.parseLong(textCodigo.getText().toString()));
             multa.setFechaHora(new Date());
 //            multa.setAgente(agente1);
             multa.setMotivo("Motivo....");
@@ -43,7 +44,8 @@ public class FormularioNuevaMulta extends AppCompatActivity {
             multa.setAceptada(true);
 
             // Vamos a persistir la multa...
-            multaServices.create(multa);
+//            multaServices.create(multa);
+            MultaServicesImpl.getInstance().create(multa); //Hago instancia a MultaServicesImpl para poder crear la multa
 
             //Instanciamos un intent
             Intent intent = new Intent(this, MainActivity.class);
