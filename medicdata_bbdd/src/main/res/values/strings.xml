@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MedicData</string>
+    <string name="weightUnit">Kg</string>
+</resources>

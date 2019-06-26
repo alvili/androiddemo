@@ -85,7 +85,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String nombreDDBB = this.getDatabaseName();
         nombreDDBB = this.DATABASE_NAME;
 
-        return false;
+        // en caso de error, insert devuelve -1
+
+        return resultado == -1 ? false: true;
     }
 
     public Cursor getAll(){

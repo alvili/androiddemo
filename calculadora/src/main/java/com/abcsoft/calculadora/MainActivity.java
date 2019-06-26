@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                     if (operandos.get(i + 1).getValor() != 0) {
                         resultado /= operandos.get(i + 1).getValor();
                     }else{
-                        resultado=999999999999999999999999999999;
+                        resultado=99999999999999999.0;
                     }
                     break;
             }

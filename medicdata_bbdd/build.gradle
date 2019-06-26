@@ -5,7 +5,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.abcsoft.medicdata_database"
+        applicationId "com.abcsoft.medicdata"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
