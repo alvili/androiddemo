@@ -2,9 +2,7 @@ package com.abcsoft.medicdata_bbdd.model;
 
 
 import android.content.Context;
-import android.database.Cursor;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,7 +15,7 @@ public class LecturaServicesSQLite implements LecturaServices {
     private static Context contexto;
     private DatabaseHelper myDB;
     private static final Map<Integer,Lectura> LECTURAS;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 //    private static final LecturaServicesSQLite INSTANCE = new LecturaServicesSQLite(contexto);
 
     static {
@@ -27,7 +25,7 @@ public class LecturaServicesSQLite implements LecturaServices {
     public LecturaServicesSQLite(Context contexto) {
         this.contexto = contexto;
         //Creo la bbdd
-        myDB = new DatabaseHelper(contexto);
+        myDB = new DatabaseHelper(contexto,1);
     }
 
 //    public static LecturaServicesSQLite getInstance(){
@@ -37,18 +35,12 @@ public class LecturaServicesSQLite implements LecturaServices {
     @Override
     public Lectura create(Lectura lectura) {
 
-        //La nueva lectura no tiene código
-        myDB.insertData(
-                lectura.getFechaHora(),
-                lectura.getPeso(),
-                lectura.getDiastolica(),
-                lectura.getSistolica(),
-                lectura.getLongitud(),
-                lectura.getLatitud()
-        );
-        Integer newCode = myDB.maxCodigo();
+        //La nueva lectura no tiene código. El codigo lo genera la inserción a la bbdd
+        //myDB.insertData(lectura);
+        //Integer newCode = myDB.maxCodigo();
+        Integer newCode = myDB.insertData(lectura);
+        lectura.setCodigo(newCode);
         return LECTURAS.put(newCode, lectura);
-
     }
 
     @Override
@@ -68,43 +60,26 @@ public class LecturaServicesSQLite implements LecturaServices {
 
     @Override
     public List<Lectura> getAll() {
-
-        Cursor cursor = myDB.getAll();
-        Lectura lectura;
-
-        if (cursor.getCount() == 0) {
-            return null;
+        for (Lectura lec : myDB.getAll()){
+            LECTURAS.put(lec.getCodigo(), lec);
         }
 
-        while (cursor.moveToNext()) {
-            Integer codigo = cursor.getInt(0);
-            Date fechaHora = null;
-            try {
-                fechaHora = sdf.parse(cursor.getString(1));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            Double peso = cursor.getDouble(2);
-            Double diastolica = cursor.getDouble(3);
-            Double sistolica = cursor.getDouble(4);
-            Double longitud = cursor.getDouble(5);
-            Double latitud = cursor.getDouble(6);
-
-            lectura = new Lectura(fechaHora, peso, diastolica, sistolica, longitud, latitud);
-            LECTURAS.put(codigo, lectura);
-        }
-        return new ArrayList<Lectura>(LECTURAS.values());
+        return myDB.getAll();
     }
 
     @Override
     public List<Lectura> getBetweenDates(Date fecha1, Date fecha2){
-            List<Lectura> lecturas = new ArrayList<>();
 
-            for(Lectura lectura:getAll()){
+        //Pedir todos los registros e iterarlos es ineficiente.
+        //La solucion buena es mediante el motor del sql, mucho mas optima y no devuelve información que no queremos
+
+            List<Lectura> lecturasFiltradas = new ArrayList<>();
+
+            for(Lectura lectura : myDB.getAll()){
                 if (lectura.getFechaHora().after(fecha1) && lectura.getFechaHora().before(fecha2)){
-                    lecturas.add(lectura);
+                    lecturasFiltradas.add(lectura);
                 }
             }
-            return lecturas;
+            return lecturasFiltradas;
     }
 }

@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">MedicData</string>
     <string name="weightUnit">Kg</string>
+    <string name="diastolica">Diastólica</string>
+    <string name="sistolica">Sistólica</string>
+    <string name="peso">Peso</string>
+    <string name="enviar">Guardar</string>
+    <string name="diastolicaPlaceHolder"></string>
+    <string name="sistolicaPlaceHolder"></string>
+    <string name="pesoPlaceHolder"></string>
 </resources>

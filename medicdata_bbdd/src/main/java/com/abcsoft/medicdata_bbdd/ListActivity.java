@@ -4,9 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.abcsoft.medicdata.R;
+//import com.abcsoft.medicdata.R;
 
-public class MainActivity extends AppCompatActivity {
+public class ListActivity extends AppCompatActivity {
 
     private ListView lista;
 
@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
         lista = (ListView) findViewById(R.id.idLista);
 
         //Tenemos que setear a la lista un adaptador
-        Adaptador adaptador = new Adaptador(this);
-        lista.setAdapter(adaptador);
+        lista.setAdapter(new Adaptador(this));
     }
 }
