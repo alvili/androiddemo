@@ -1,4 +1,4 @@
-package com.abcsoft.medicdata_bbdd.model;
+package com.abcsoft.medicdata.model;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.abcsoft.medicdata_bbdd.Utilidades;
+import com.abcsoft.medicdata.Utilidades;
 
 import java.util.ArrayList;
 import java.util.List;

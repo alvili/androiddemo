@@ -1,4 +1,4 @@
-package com.abcsoft.medicdata_bbdd.model;
+package com.abcsoft.medicdata.model;
 
 import java.util.Date;
 import java.util.List;

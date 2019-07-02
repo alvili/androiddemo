@@ -1,9 +1,8 @@
-package com.abcsoft.medicdata_bbdd.model;
+package com.abcsoft.medicdata.model;
 
 
 import android.content.Context;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

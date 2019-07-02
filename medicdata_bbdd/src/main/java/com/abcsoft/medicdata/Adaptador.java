@@ -1,9 +1,9 @@
-package com.abcsoft.medicdata_bbdd;
+package com.abcsoft.medicdata;
 
 import com.abcsoft.medicdata.R;
-import com.abcsoft.medicdata_bbdd.model.Lectura;
-import com.abcsoft.medicdata_bbdd.model.LecturaServicesImpl;
-import com.abcsoft.medicdata_bbdd.model.LecturaServicesSQLite;
+import com.abcsoft.medicdata.model.Lectura;
+import com.abcsoft.medicdata.model.LecturaServicesImpl;
+import com.abcsoft.medicdata.model.LecturaServicesSQLite;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -20,19 +20,21 @@ public class Adaptador extends BaseAdapter {
     private LayoutInflater inflater = null;
     private List<Lectura> lecturas;
     private List<Lectura> lecturas2;
+    private LecturaServicesSQLite lss;
     private Context contexto;
 
 
     public Adaptador(Context contexto){
         this.contexto=contexto;
         inflater = (LayoutInflater) contexto.getSystemService(contexto.LAYOUT_INFLATER_SERVICE);
-        lecturas = LecturaServicesImpl.getInstance().getAll();
-        lecturas2 = new LecturaServicesSQLite(this);
+        //lecturas = LecturaServicesImpl.getInstance().getAll();
+        lss = new LecturaServicesSQLite(contexto);
+        lecturas= lss.getAll();
 
-        //Guardo leas lecturas a la bbdd
-        for (Lectura lectura : lecturas){
-            lecturas2.create(lectura);
-        }
+//        //Guardo leas lecturas a la bbdd
+//        for (Lectura lectura : lecturas){
+//            lss.create(lectura);
+//        }
 
     }
 

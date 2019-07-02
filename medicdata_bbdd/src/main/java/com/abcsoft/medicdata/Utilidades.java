@@ -1,4 +1,4 @@
-package com.abcsoft.medicdata_bbdd;
+package com.abcsoft.medicdata;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

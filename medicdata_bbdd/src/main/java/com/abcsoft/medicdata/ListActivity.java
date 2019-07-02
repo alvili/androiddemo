@@ -1,4 +1,4 @@
-package com.abcsoft.medicdata_bbdd;
+package com.abcsoft.medicdata;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
