@@ -1,7 +1,11 @@
-package com.abcsoft.medicdata.model;
+package com.abcsoft.medicdata.services.impl;
 
 
 import android.content.Context;
+
+import com.abcsoft.medicdata.database.DatabaseHelper;
+import com.abcsoft.medicdata.model.Lectura;
+import com.abcsoft.medicdata.services.LecturaServices;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +17,7 @@ public class LecturaServicesSQLite implements LecturaServices {
 
     private static Context contexto;
     private DatabaseHelper myDB;
-    private static final Map<Integer,Lectura> LECTURAS;
+    private static final Map<Integer, Lectura> LECTURAS;
 //    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 //    private static final LecturaServicesSQLite INSTANCE = new LecturaServicesSQLite(contexto);
 
@@ -24,7 +28,7 @@ public class LecturaServicesSQLite implements LecturaServices {
     public LecturaServicesSQLite(Context contexto) {
         this.contexto = contexto;
         //Creo la bbdd
-        myDB = new DatabaseHelper(contexto,1);
+        myDB = new DatabaseHelper(contexto);
     }
 
 //    public static LecturaServicesSQLite getInstance(){

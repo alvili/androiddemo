@@ -103,7 +103,6 @@ tools:context="com.abcsoft.medicdata.fragments.FormLecturaFragment">
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="enviar"
         android:text="@string/enviar"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"

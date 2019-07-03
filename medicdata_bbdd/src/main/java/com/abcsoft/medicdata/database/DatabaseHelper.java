@@ -1,4 +1,4 @@
-package com.abcsoft.medicdata.model;
+package com.abcsoft.medicdata.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.abcsoft.medicdata.Utilidades;
+import com.abcsoft.medicdata.services.Utilidades;
+import com.abcsoft.medicdata.model.Lectura;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +41,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_5_TYPE ="REAL";
     public static final String COL_6_TYPE ="REAL";
 
-    public DatabaseHelper(Context context, int version) {
-        super(context, DATABASE_NAME, null, version);
+    public DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
@@ -59,7 +60,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
               .append(COL_5_TAG).append(" ").append(COL_5_TYPE).append(", ")
               .append(COL_6_TAG).append(" ").append(COL_6_TYPE).append(");");
 
-        Log.d("*******", strSQL.toString());
         db.execSQL(strSQL.toString());
     }
 

@@ -1,4 +1,4 @@
-package com.abcsoft.medicdata;
+package com.abcsoft.medicdata.services;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

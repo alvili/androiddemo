@@ -1,4 +1,7 @@
-package com.abcsoft.medicdata.model;
+package com.abcsoft.medicdata.services.impl;
+
+import com.abcsoft.medicdata.model.Lectura;
+import com.abcsoft.medicdata.services.LecturaServices;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,7 +13,7 @@ import java.util.TreeMap;
 
 public class LecturaServicesImpl implements LecturaServices {
 
-    private static final Map<Integer,Lectura> LECTURAS;
+    private static final Map<Integer, Lectura> LECTURAS;
 
     private static final LecturaServicesImpl INSTANCE = new LecturaServicesImpl();
 

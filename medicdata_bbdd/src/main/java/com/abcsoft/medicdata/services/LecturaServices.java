@@ -1,4 +1,6 @@
-package com.abcsoft.medicdata.model;
+package com.abcsoft.medicdata.services;
+
+import com.abcsoft.medicdata.model.Lectura;
 
 import java.util.Date;
 import java.util.List;

@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".activities.MainActivity"
     android:orientation="vertical">
 
 <fragment
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/menu"
-    android:name="com.abcsoft.medicdata.MenuFragment"
+    android:name="com.abcsoft.medicdata.fragments.MenuFragment"
     tools:layout="@layout/fragment_menu">
 </fragment>
 
