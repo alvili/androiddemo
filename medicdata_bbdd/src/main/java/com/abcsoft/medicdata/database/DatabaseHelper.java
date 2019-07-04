@@ -15,7 +15,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    Utilidades ut = new Utilidades();
+    Utilidades util = new Utilidades();
 
     //Nombre de la bbdd
     public static final String DATABASE_NAME = "medicdata.db";
@@ -35,9 +35,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String COL_0_TYPE ="INTEGER";
     public static final String COL_1_TYPE ="TEXT";
-    public static final String COL_2_TYPE ="TEXT";
-    public static final String COL_3_TYPE ="TEXT";
-    public static final String COL_4_TYPE ="TEXT";
+    public static final String COL_2_TYPE ="REAL";
+    public static final String COL_3_TYPE ="REAL";
+    public static final String COL_4_TYPE ="REAL";
     public static final String COL_5_TYPE ="REAL";
     public static final String COL_6_TYPE ="REAL";
 
@@ -75,14 +75,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Métodos para realizar operaciones CRUD, obtención de listas, etc...
 //    public boolean insertData(Date fechahora, Double peso, Double diastolica, Double sistolica, Double longitud, Double latitud){
-    public int insertData(Lectura lectura){
+    public Lectura createLectura(Lectura lectura){
 
         //Necesito una referencia de acceso a la bbdd
         SQLiteDatabase db = this.getWritableDatabase(); //Devuelve una referencia a la bbdd en modo escritura. Si la bbdd no existe, la crea
 
         //Necesito un contenedor de valores
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_1_TAG, ut.getStringFromDate(lectura.getFechaHora()));
+        contentValues.put(COL_1_TAG, util.getStringFromDate(lectura.getFechaHora()));
         contentValues.put(COL_2_TAG, lectura.getPeso());
         contentValues.put(COL_3_TAG, lectura.getDiastolica());
         contentValues.put(COL_4_TAG, lectura.getSistolica());
@@ -91,21 +91,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.beginTransaction();//Inicia transaccion.Sirve para garantizar la consistencia de la bbdd en caso de problemas
 
-        long resultado = db.insert(TABLE_NAME,null, contentValues);
+        long codigo = db.insert(TABLE_NAME,null, contentValues);
         //db.insert devulve un long correspondiente al número de registros. Equivale al codigo
         //nullColumnHack se utiliza cuando queremos insertar un registro con valores null
 
         db.endTransaction(); //Cierra el beginTransaction
 
-        //Si resultado = -1, indica que algo ha ido mal
-        //Si resultado >= 0, indica el numero de registros afectados
-        if (resultado > 0) {
-            lectura.setCodigo((int) resultado);
-            return lectura.getCodigo();
-        } else {
-            return -1;
+        //Si codigo = -1, indica que algo ha ido mal
+        //Si codigo >= 0, indica el numero de registros afectados
+        if (codigo > 0) {
+            lectura.setCodigo((int) codigo);
         }
-//        return resultado == -1 ? false: true;
+        return codigo == -1 ? null:lectura;
+    }
+
+    public Lectura getLectura (int codigo){
+        SQLiteDatabase db = this.getWritableDatabase(); //Devuelve una referencia a la bbdd en modo escritura. Si la bbdd no existe, la crea
+
+//        String[] args = new String[] {String.valueOf(codigo)};
+//        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL_0_TAG + " = ?", args);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL_0_TAG + " = " + String.valueOf(codigo),null);
+
+        List<Lectura> lecturas = cursorLecturaToList(cursor);
+        return lecturas.size() > 0 ? lecturas.get(0) : null;
     }
 
     //Deveulve el valor de codigo mas alto. Corresponde al último elemento insertado
@@ -118,16 +126,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //Devuelve una List con todos los registros
     public List<Lectura> getAll(){
 
-        Cursor cursor;
-
         //Conexión a la bbdd
         SQLiteDatabase db = this.getWritableDatabase();
 
         //Mediante rawQuery
-        //cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " ORDER BY " + COL_1_TAG, null);
-
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " ORDER BY " + COL_1_TAG + " DESC", null);
+/*
         //Mediante query
-        cursor = db.query(
+        Cursor cursor = db.query(
                 TABLE_NAME,
                 new String[]{COL_0_TAG, COL_1_TAG, COL_2_TAG, COL_3_TAG, COL_4_TAG, COL_5_TAG, COL_6_TAG},
                 null,
@@ -137,9 +143,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_1_TAG,
                 null
         );
-
+*/
         return cursorLecturaToList(cursor);
-
     }
 
 
@@ -155,25 +160,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Lectura lectura;
 
         //cursor no pot estar buit
-        if (cursor.getCount() == 0) {
-            return null;
+        if (cursor != null && cursor.getCount() > 0) {
+            //Recorro el cursor
+            cursor.moveToFirst();
+            while (cursor.moveToNext()) {
+                lectura = new Lectura(
+                        util.getDateFromString(cursor.getString(1)),
+                        cursor.getDouble(2),
+                        cursor.getDouble(3),
+                        cursor.getDouble(4),
+                        cursor.getDouble(5),
+                        cursor.getDouble(6)
+                );
+                lectura.setCodigo(cursor.getInt(0));
+                lecturas.add(lectura);
+            }
         }
-
-        //Recorro el cursor
-        cursor.moveToFirst();
-        while (cursor.moveToNext()) {
-            lectura = new Lectura(
-                    ut.getDateFromString(cursor.getString(1)),
-                    cursor.getDouble(2),
-                    cursor.getDouble(3),
-                    cursor.getDouble(4),
-                    cursor.getDouble(5),
-                    cursor.getDouble(6)
-            );
-            lectura.setCodigo(cursor.getInt(0));
-            lecturas.add(lectura);
-        }
-
+        cursor.close();
         return lecturas;
     }
 

@@ -15,18 +15,18 @@ import java.util.TreeMap;
 
 public class LecturaServicesSQLite implements LecturaServices {
 
-    private static Context contexto;
+//    private static Context contexto;
     private DatabaseHelper myDB;
-    private static final Map<Integer, Lectura> LECTURAS;
+//    private static final Map<Integer, Lectura> LECTURAS;
 //    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 //    private static final LecturaServicesSQLite INSTANCE = new LecturaServicesSQLite(contexto);
 
-    static {
-        LECTURAS = new TreeMap<>();
-    }
+//    static {
+//        LECTURAS = new TreeMap<>();
+//    }
 
     public LecturaServicesSQLite(Context contexto) {
-        this.contexto = contexto;
+        //this.contexto = contexto;
         //Creo la bbdd
         myDB = new DatabaseHelper(contexto);
     }
@@ -41,9 +41,10 @@ public class LecturaServicesSQLite implements LecturaServices {
         //La nueva lectura no tiene código. El codigo lo genera la inserción a la bbdd
         //myDB.insertData(lectura);
         //Integer newCode = myDB.maxCodigo();
-        Integer newCode = myDB.insertData(lectura);
-        lectura.setCodigo(newCode);
-        return LECTURAS.put(newCode, lectura);
+//        Integer newCode = myDB.createLectura(lectura);
+//        lectura.setCodigo(newCode);
+//        return LECTURAS.put(newCode, lectura);
+        return myDB.createLectura(lectura);
     }
 
     @Override
@@ -63,15 +64,14 @@ public class LecturaServicesSQLite implements LecturaServices {
 
     @Override
     public List<Lectura> getAll() {
-        for (Lectura lec : myDB.getAll()){
-            LECTURAS.put(lec.getCodigo(), lec);
-        }
-
+//        for (Lectura lec : myDB.getAll()){
+//            LECTURAS.put(lec.getCodigo(), lec);
+//        }
         return myDB.getAll();
     }
 
     @Override
-    public List<Lectura> getBetweenDates(Date fecha1, Date fecha2){
+    public List<Lectura> getBetweenDates(Date desde_fecha1, Date hasta_fecha2){
 
         //Pedir todos los registros e iterarlos es ineficiente.
         //La solucion buena es mediante el motor del sql, mucho mas optima y no devuelve información que no queremos
@@ -79,7 +79,7 @@ public class LecturaServicesSQLite implements LecturaServices {
             List<Lectura> lecturasFiltradas = new ArrayList<>();
 
             for(Lectura lectura : myDB.getAll()){
-                if (lectura.getFechaHora().after(fecha1) && lectura.getFechaHora().before(fecha2)){
+                if (lectura.getFechaHora().after(desde_fecha1) && lectura.getFechaHora().before(hasta_fecha2)){
                     lecturasFiltradas.add(lectura);
                 }
             }
