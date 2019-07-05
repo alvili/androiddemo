@@ -12,6 +12,7 @@ public class VisorTexto extends AppCompatActivity {
 
 
         //TODO
+        /*
         ImageView imagen = (ImageView) findViewById(R.id.idImagenGrande);
 
         //Recogemos los datos enviados por el intent i usarlos para mostrar la imagen
@@ -25,7 +26,7 @@ public class VisorTexto extends AppCompatActivity {
         if(b != null){
             imagen.setImageResource(b.getInt("IMG"));
         }
-
+*/
 
 
 
