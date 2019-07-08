@@ -21,4 +21,11 @@ public class Utilidades {
         return null;
     }
 
+    //Devuelve un nombre aleatorio basado en un rango
+    public String nombreAleatorio(int rango){
+        int c = (int) (Math.random()*rango);
+        return String.valueOf(c);
+
+    }
+
 }

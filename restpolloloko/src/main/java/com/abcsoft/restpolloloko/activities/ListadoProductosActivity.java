@@ -8,6 +8,8 @@ import com.abcsoft.restpolloloko.R;
 import com.abcsoft.restpolloloko.model.Producto;
 import com.abcsoft.restpolloloko.retrofit.JsonPlaceHolderApi;
 import com.abcsoft.restpolloloko.retrofit.ProductoAPI;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -31,9 +33,25 @@ public class ListadoProductosActivity extends AppCompatActivity {
 
         textViewResult = (TextView) findViewById(R.id.text_view_productos);
 
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl("https://pedi-gest.herokuapp.com/")
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+
+//
+//        Gson gson = new GsonBuilder()
+//                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+//                .create();
+//
+//        RestAdapter restAdapter = new RestAdapter.Builder()
+//                .setEndpoint(API_BASE_URL)
+//                .setConverter(new GsonConverter.create(gson))
+//                .build();
+
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://pedi-gest.herokuapp.com/")
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         jsonPlaceHolderApi = retrofit.create(ProductoAPI.class);

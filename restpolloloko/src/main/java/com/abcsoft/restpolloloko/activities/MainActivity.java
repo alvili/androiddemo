@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button botonCamareros;
     Button botonProductos;
     Button botonPedidos;
+    Button botonAltaCamareros;
+    Button botonAltaProductos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +24,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         botonCamareros = findViewById(R.id.button1);
         botonProductos = findViewById(R.id.button2);
         botonPedidos = findViewById(R.id.button3);
+        botonAltaCamareros = findViewById(R.id.button4);
+        botonAltaProductos = findViewById(R.id.button5);
         botonCamareros.setOnClickListener(this);
         botonProductos.setOnClickListener(this);
         botonPedidos.setOnClickListener(this);
+        botonAltaCamareros.setOnClickListener(this);
+        botonAltaProductos.setOnClickListener(this);
     }
 
     @Override
@@ -38,6 +44,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case "2": intent = new Intent(this, ListadoProductosActivity.class);
                 break;
             case "3": intent = new Intent(this, ListadoPedidosActivity.class);
+                break;
+            case "4": intent = new Intent(this, AltaCamareroActivity.class);
+                break;
+            case "5": intent = new Intent(this, AltaProductoActivity.class);
                 break;
         }
         startActivity(intent);

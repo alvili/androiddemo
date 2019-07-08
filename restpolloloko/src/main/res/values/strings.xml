@@ -3,4 +3,9 @@
     <string name="camarero">Camarero</string>
     <string name="productos">PRODUCTOS</string>
     <string name="pedidos">PEDIDOS</string>
+    <string name="altacamarero">Alta Camarero</string>
+    <string name="altaproducto">Alta Producto</string>
+    <string name="botonCrear">CREAR</string>
+    <string name="nombre">Nombre:</string>
+    <string name="codigo">Código:</string>
 </resources>
