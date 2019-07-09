@@ -1,12 +1,14 @@
 package com.abcsoft.restpolloloko.model;
 
+import java.util.Date;
+
 public class Producto {
 
     private String categoria;
     private Integer codigo;
     private Boolean descatalogado;
     private String descripcion;
-    private String fechaAlta;
+    private Date fechaAlta;
     private String nombre;
     private Double precio;
 
@@ -54,11 +56,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public String getFechaAlta() {
+    public Date getFechaAlta() {
         return fechaAlta;
     }
 
-    public void setFechaAlta(String fechaAlta) {
+    public void setFechaAlta(Date fechaAlta) {
         this.fechaAlta = fechaAlta;
     }
 

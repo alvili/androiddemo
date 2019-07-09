@@ -6,21 +6,19 @@ import android.widget.TextView;
 
 import com.abcsoft.restpolloloko.R;
 import com.abcsoft.restpolloloko.model.Pedido;
-import com.abcsoft.restpolloloko.model.Producto;
-import com.abcsoft.restpolloloko.retrofit.JsonPlaceHolderApi;
+import com.abcsoft.restpolloloko.retrofit.PedidosAPI;
+import com.abcsoft.restpolloloko.retrofit.RetrofitHelper;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ListadoPedidosActivity extends AppCompatActivity {
 
     private TextView textViewResult;
-    private JsonPlaceHolderApi jsonPlaceHolderApi;
+    private PedidosAPI jsonPlaceHolderApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +27,7 @@ public class ListadoPedidosActivity extends AppCompatActivity {
 
         textViewResult = (TextView) findViewById(R.id.text_view_pedidos);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://pedi-gest.herokuapp.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+        jsonPlaceHolderApi = RetrofitHelper.getPedidosAPI();
 
         getPedidos();
 
@@ -42,7 +35,7 @@ public class ListadoPedidosActivity extends AppCompatActivity {
 
     private void getPedidos(){
 
-        Call<List<Pedido>> call = jsonPlaceHolderApi.getPedidos();
+        Call<List<Pedido>> call = jsonPlaceHolderApi.getAll();
 
         call.enqueue(new Callback<List<Pedido>>() {
 

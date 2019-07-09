@@ -6,20 +6,15 @@ import android.widget.TextView;
 
 import com.abcsoft.restpolloloko.R;
 import com.abcsoft.restpolloloko.model.Producto;
-import com.abcsoft.restpolloloko.retrofit.JsonPlaceHolderApi;
 import com.abcsoft.restpolloloko.retrofit.ProductoAPI;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.abcsoft.restpolloloko.retrofit.RetrofitHelper;
+import com.abcsoft.restpolloloko.services.Utilidades;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ListadoProductosActivity extends AppCompatActivity {
 
@@ -33,28 +28,7 @@ public class ListadoProductosActivity extends AppCompatActivity {
 
         textViewResult = (TextView) findViewById(R.id.text_view_productos);
 
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl("https://pedi-gest.herokuapp.com/")
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-
-//
-//        Gson gson = new GsonBuilder()
-//                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-//                .create();
-//
-//        RestAdapter restAdapter = new RestAdapter.Builder()
-//                .setEndpoint(API_BASE_URL)
-//                .setConverter(new GsonConverter.create(gson))
-//                .build();
-
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://pedi-gest.herokuapp.com/")
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        jsonPlaceHolderApi = retrofit.create(ProductoAPI.class);
+        jsonPlaceHolderApi = RetrofitHelper.getProductoAPI();
 
         getProductos();
 
@@ -62,8 +36,7 @@ public class ListadoProductosActivity extends AppCompatActivity {
 
     private void getProductos(){
 
-        final StringBuilder str = new StringBuilder();
-        Call<List<Producto>> call = jsonPlaceHolderApi.getProductos();
+        Call<List<Producto>> call = jsonPlaceHolderApi.getAll();
 
         call.enqueue(new Callback<List<Producto>>() {
 
@@ -83,7 +56,7 @@ public class ListadoProductosActivity extends AppCompatActivity {
                     .append("Nombre: ").append(producto.getNombre()).append("\n")
                     .append("Categoria: ").append(producto.getCategoria()).append("\n")
                     .append("Descripcion: ").append(producto.getDescripcion()).append("\n")
-                    .append("Fecha: ").append(producto.getFechaAlta()).append("\n")
+                    .append("Fecha: ").append(Utilidades.getStringFromDate(producto.getFechaAlta())).append("\n")
                     .append("Descatalogado: ").append(producto.getDescatalogado()).append("\n")
                     .append("Precio: ").append(producto.getPrecio()).append("\n")
                     .append("\n");
@@ -101,7 +74,5 @@ public class ListadoProductosActivity extends AppCompatActivity {
         });
 
     }
-
-
 
 }

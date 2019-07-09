@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.abcsoft.restpolloloko.R;
 import com.abcsoft.restpolloloko.model.Camarero;
 import com.abcsoft.restpolloloko.retrofit.CamareroAPI;
-import com.abcsoft.restpolloloko.retrofit.JsonPlaceHolderApi;
+import com.abcsoft.restpolloloko.retrofit.RetrofitHelper;
 
 import java.util.List;
 
@@ -29,12 +29,7 @@ public class ListadoCamarerosActivity extends AppCompatActivity {
 
         textViewResult = (TextView) findViewById(R.id.text_view_camareros);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://pedi-gest.herokuapp.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        jsonPlaceHolderApi = retrofit.create(CamareroAPI.class);
+        jsonPlaceHolderApi = RetrofitHelper.getCamareroAPI();
 
         getCamareros();
 
@@ -42,7 +37,7 @@ public class ListadoCamarerosActivity extends AppCompatActivity {
 
     private void getCamareros(){
 
-        Call<List<Camarero>> call = jsonPlaceHolderApi.getCamareros();
+        Call<List<Camarero>> call = jsonPlaceHolderApi.getAll();
 
         call.enqueue(new Callback<List<Camarero>>() {
 

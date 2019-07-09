@@ -8,11 +8,15 @@ public class Utilidades {
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
-    public String getStringFromDate(Date date){
+    private Utilidades() {
+
+    }
+
+    public static String getStringFromDate(Date date){
         return sdf.format(date);
     }
 
-    public Date getDateFromString(String string){
+    public static Date getDateFromString(String string){
         try {
             return sdf.parse(string);
         } catch (ParseException e) {
@@ -22,7 +26,7 @@ public class Utilidades {
     }
 
     //Devuelve un nombre aleatorio basado en un rango
-    public String nombreAleatorio(int rango){
+    public static String nombreAleatorio(int rango){
         int c = (int) (Math.random()*rango);
         return String.valueOf(c);
 

@@ -13,10 +13,10 @@ import retrofit2.http.POST;
 public interface CamareroAPI {
 
     @GET("api/camareros")
-    Call<List<Camarero>> getCamareros();
+    Call<List<Camarero>> getAll();
 
     @Headers("Content-type: application/json")
     @POST("api/camareros")
-    Call <Camarero> createCamarero(@Body Camarero camarero);
+    Call <Camarero> create(@Body Camarero camarero);
 
 }
