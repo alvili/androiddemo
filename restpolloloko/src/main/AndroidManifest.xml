@@ -16,6 +16,7 @@
         <activity android:name=".activities.ListadoPedidosActivity" />
         <activity android:name=".activities.ListadoProductosActivity" />
         <activity android:name=".activities.ListadoCamarerosActivity" />
+        <activity android:name=".activities.ListViewActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">RestPolloloko</string>
-    <string name="camarero">Camarero</string>
     <string name="productos">PRODUCTOS</string>
     <string name="pedidos">PEDIDOS</string>
     <string name="altacamarero">Alta Camarero</string>
@@ -8,4 +7,11 @@
     <string name="botonCrear">CREAR</string>
     <string name="nombre">Nombre:</string>
     <string name="codigo">Código:</string>
+    <string name="descripcion">Descripción</string>
+    <string name="descatalogado">Descatalogado</string>
+    <string name="categoria">Categoria</string>
+    <string name="fecha">Fecha</string>
+    <string name="precio">Precio</string>
+    <string name="mesa">Mesa</string>
+    <string name="camarero">Camarero</string>
 </resources>

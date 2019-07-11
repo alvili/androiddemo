@@ -6,7 +6,7 @@ import java.util.List;
 public class Pedido {
 
     private Camarero camarero;
-    private String fecha;
+    private Date fecha;
     private Integer id;
     private List<LineaPedido> lineasPedido;
     private Integer mesa;
@@ -22,11 +22,11 @@ public class Pedido {
         this.camarero = camarero;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
