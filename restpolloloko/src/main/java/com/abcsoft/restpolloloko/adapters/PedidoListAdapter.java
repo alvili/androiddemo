@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.abcsoft.restpolloloko.R;
@@ -48,11 +49,14 @@ public class PedidoListAdapter extends BaseAdapter {
         TextView camarero = view.findViewById(R.id.id_textview_pedido_camarero);
         TextView mesa = view.findViewById(R.id.id_textview_pedido_mesa);
         TextView fecha = view.findViewById(R.id.id_textview_pedido_fecha);
+        ListView lineasPedido = (ListView) view.findViewById(R.id.idMiLista);
 
         id.setText(String.valueOf(pedidos.get(position).getId()));
         camarero.setText(pedidos.get(position).getCamarero().getNombre());
         mesa.setText(pedidos.get(position).getMesa());
         fecha.setText(Utilidades.getStringFromDate(pedidos.get(position).getFecha()));
+
+        lineasPedido.setAdapter(new LineaPedidoListAdapter( getApplicationContext(), pedidos.get(position).getLineasPedido()));
 
         return view;
     }
